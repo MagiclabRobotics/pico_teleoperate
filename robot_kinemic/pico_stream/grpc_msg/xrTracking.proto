@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+package xrTracking;
+
+message Matrix4x4 {
+  float m00 = 1;
+  float m01 = 2;
+  float m02 = 3;
+  float m03 = 4;
+  float m10 = 5;
+  float m11 = 6;
+  float m12 = 7;
+  float m13 = 8;
+  float m20 = 9;
+  float m21 = 10;
+  float m22 = 11;
+  float m23 = 12;
+  float m30 = 13;
+  float m31 = 14;
+  float m32 = 15;
+  float m33 = 16;
+}
+
+message Skeleton {
+  repeated Matrix4x4 jointMatrices = 1; // Array of 4x4 matrices, expecting 24 per hand based on your structure
+}
+
+// The hand tracking information, including the full 4x4 matrix for the wrist and the skeleton
+message Hand {
+  Matrix4x4 wristMatrix = 1; // 4x4 matrix for the wrist position and orientation
+  Skeleton skeleton = 2; // The hand's skeleton
+  bool isTracked = 3;
+}
+
+message MotionTracker{
+  Matrix4x4 matrix = 1; //追踪器位姿
+  bool isAccurate = 2; //是否准确
+  string sn = 3;
+}
+message MotionTrackerKeyAction{
+  string sn = 1;  //设备唯一值
+  int32 code = 2;  //Android标准按键code（Power key: 26）
+  int32 action = 3;  //`up` (`1`) and `down` (`0`)，Currently, only action `0` is supported.
+  int32 repeat = 4;  //Currently, it appears to be `1`
+  bool shortPress = 5;  //it is always `true`
+}
+
+// The overall hand update message, including data for both hands
+message HandUpdate {
+  Hand left_hand = 1;
+  Hand right_hand = 2;
+  Matrix4x4 Head = 3;
+  repeated MotionTracker motionTracker = 4;
+}
+
+message Vector3 {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message Vector2 {
+  float x = 1;
+  float y = 2;
+}
+
+message Button {
+  bool isPressed = 1;
+  bool isTouched = 2;
+}
+
+message StickButton {
+  Vector2 vector2 = 1;
+  bool isTouched = 2;
+}
+
+message Controller{
+  Matrix4x4 matrix = 1; //控制器位姿
+  Vector3 velocity = 2;  //获取指定控制器的线性速度（单位是米/秒）
+  Vector3 angular_velocity = 3;  //获取指定控制器的角速度（单位是弧度/秒）
+  Button btn_one = 4;   //对应按钮A和X
+  Button btn_two = 5;   //对应按钮B和Y
+  Button trigger_index = 6;  //食指触发器
+  Button trigger_hand = 7;   //中指触发器
+  StickButton thumb_stick = 8; //拇指摇杆
+  bool isConnected = 9;  //控制器数据是否有效
+
+}
+
+message ControllerUpdate{
+  Controller left_controller = 1;
+  Controller right_controller = 2;
+  Matrix4x4 Head = 3;
+  repeated MotionTracker motionTracker = 4;
+}
+
+
+message ButtonState{
+  int32 state = 1;            // 状态 0灰色， 1绿色， 2蓝色， 3红色
+  string message = 2;       // 状态描述 字符数量不超过10个
+}
+
+
+message ButtonInfo{
+  ButtonState l_btn_one = 1;          // 左手按键1-X
+  ButtonState l_btn_two = 2;          // 左手按键2-Y
+  ButtonState l_trigger_index = 3;    // 左手食指
+  ButtonState l_trigger_hand = 4;     // 左手中指
+  ButtonState r_btn_one = 5;          // 右手按键1-X
+  ButtonState r_btn_two = 6;          // 右手按键2-Y
+  ButtonState r_trigger_index = 7;    // 右手食指
+  ButtonState r_trigger_hand = 8;     // 右手中指
+}
+
+message Result{
+  int32 code = 1;
+  string message = 2;
+}
+
+service TrackingService {
+  //监听控制器追踪
+  rpc StreamControllerUpdates(ControllerUpdate) returns (stream ControllerUpdate) {}
+  //监听手部追踪
+  rpc StreamHandUpdates(HandUpdate) returns (stream HandUpdate) {}
+  //监听追踪器按键
+  rpc StreamMotionTrackerKeyAction(MotionTrackerKeyAction) returns (stream MotionTrackerKeyAction) {}
+  // 同步按钮触发的状态
+  rpc StreamButtonInfo(stream ButtonInfo) returns (stream Result) {}
+}
+
+
+

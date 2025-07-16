@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="p4_humanoid_l_arm">
+
+  <!-- *************************************************************************************************** -->
+  <!--***************************************  LeftArm ************************************************** -->
+  
+  <link
+    name="pelvis">
+    <inertial>
+      <origin
+        xyz="-0.097501 -0.00071331 0.014496"
+        rpy="0 0 0" />
+      <mass
+        value="7.3588" />
+      <inertia
+        ixx="0.07295321"
+        ixy="5.28E-05"
+        ixz="0.00061832"
+        iyy="0.01891928"
+        iyz="7.9E-05"
+        izz="0.06144182" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/pelvis.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/pelvis.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  
+  <link
+    name="link_la1">
+    <inertial>
+      <origin
+        xyz="0.0077237 -0.0043281 -9.294E-05"
+        rpy="0 0 0" />
+      <mass
+        value="1.1622" />
+      <inertia
+        ixx="0.0012264"
+        ixy="3.467E-05"
+        ixz="-1.286E-05"
+        iyy="0.0013423"
+        iyz="1.821E-05"
+        izz="0.0014863" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+ <joint
+    name="joint_la1"
+    type="revolute">
+    <origin
+      xyz="-0.0079 0.199 0.347"
+      rpy="0 0 0" />
+
+    <parent
+      link="pelvis" />
+    <child
+      link="link_la1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.7576"
+      upper="2.7576"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+ <link
+    name="link_la2">
+    <inertial>
+      <origin
+        xyz="0.00092134 7.016E-05 -0.091409"
+        rpy="0 0 0" />
+      <mass
+        value="0.90457" />
+      <inertia
+        ixx="0.0013959"
+        ixy="-3.52E-06"
+        ixz="7.943E-05"
+        iyy="0.0016396"
+        iyz="1.48E-06"
+        izz="0.00097888" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_la2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_la1" />
+    <child
+      link="link_la2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.2618"
+      upper="2.5656"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_la3">
+    <inertial>
+      <origin
+        xyz="0.0086127 0.0021377 -0.23173"
+        rpy="0 0 0" />
+      <mass
+        value="0.93018" />
+      <inertia
+        ixx="0.002728"
+        ixy="-2.575E-05"
+        ixz="-0.00023015"
+        iyy="0.0026357"
+        iyz="-1.316E-05"
+        izz="0.00072894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_la3"
+    type="revolute">
+    <origin
+      xyz="-0.00025 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_la2" />
+    <child
+      link="link_la3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.6354"
+      upper="2.6354"
+      effort="0"
+      velocity="0" />
+  </joint>
+<link
+    name="link_la4">
+    <inertial>
+      <origin
+        xyz="0.0088434 3.716E-05 -0.023669"
+        rpy="0 0 0" />
+      <mass
+        value="0.16009" />
+      <inertia
+        ixx="0.00013057"
+        ixy="1.4E-07"
+        ixz="3.901E-05"
+        iyy="0.00022049"
+        iyz="-2.1E-07"
+        izz="0.0001893" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_la4"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.2595"
+      rpy="0 0 0" />
+    <parent
+      link="link_la3" />
+    <child
+      link="link_la4" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-2.2166"
+      upper="0.2443"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_la5">
+    <inertial>
+      <origin
+        xyz="0.00047941 -0.00082489 -0.095559"
+        rpy="0 0 0" />
+      <mass
+        value="1.8234" />
+      <inertia
+        ixx="0.010214"
+        ixy="-2.47E-06"
+        ixz="-3.595E-05"
+        iyy="0.01034"
+        iyz="-0.00011342"
+        izz="0.0014763" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_la5"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.3"
+      rpy="0 0 0" />
+    <parent
+      link="link_la4" />
+    <child
+      link="link_la5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.9147"
+      upper="2.9147"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <!-- -0.0501
+ -0.2489 -->
+
+  <link
+    name="link_la6">
+    <inertial>
+      <origin
+        xyz="0 -0.017559 0.00015073"
+        rpy="0 0 0" />
+      <mass
+        value="0.021475" />
+      <inertia
+        ixx="3.14E-06"
+        ixy="0"
+        ixz="0"
+        iyy="8.1E-07"
+        iyz="-2E-08"
+        izz="3.33E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_la6"
+    type="revolute">
+    <origin
+      xyz="0 0.024 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_la5" />
+    <child
+      link="link_la6" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.9948"
+      upper="0.9948"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_la7">
+    <inertial>
+      <origin
+        xyz="0.005857 -0.024313 -0.094881"
+        rpy="0 0 0" />
+      <mass
+        value="0.54629" />
+      <inertia
+        ixx="0.0011592"
+        ixy="-0.00012559"
+        ixz="2.461E-05"
+        iyy="0.0015072"
+        iyz="-5.455E-05"
+        izz="0.0005628" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://p4_humanoid_description/meshes/link_la7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_la7"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_la6" />
+    <child
+      link="link_la7" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4538"
+      upper="0.4538"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+    <link name="link_tcp_l" />
+  <joint name="joint_tcp_l" type="fixed">
+    <origin xyz="0 -0.035 -0.15" rpy="0 0 0" />
+    <parent link="link_la7" />
+    <child link="link_tcp_l" />
+    <axis xyz="0 0 0" />
+  </joint>
+</robot>
